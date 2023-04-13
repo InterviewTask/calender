@@ -7,13 +7,6 @@ const routes: Routes = [
   {
     path:'',
     component: CalenderComponent,
-    children:[
-      {
-        path:'',
-        component: AppointmentsTableComponent
-      }
-    ]
-
   }
 ];
 

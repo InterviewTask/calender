@@ -16,20 +16,18 @@
       </mat-form-field>
 
       <mat-form-field class="w-100">
-        <div class="datepicker">
-          <mat-label>Choose a date</mat-label>
-          <mat-datepicker-toggle
-            matIconSuffix
-            [for]="picker"
-          ></mat-datepicker-toggle>
-        </div>
-        <mat-datepicker disabled="false" #picker></mat-datepicker>
+        <mat-label>Choose a Date</mat-label>
         <input
           matInput
+          [matDatepicker]="releasedAtPicker"
           formControlName="date"
-          [matDatepicker]="picker"
           [disabled]="true"
         />
+
+        <mat-datepicker-toggle matSuffix [for]="releasedAtPicker">
+        </mat-datepicker-toggle>
+
+        <mat-datepicker [disabled]="false" #releasedAtPicker> </mat-datepicker>
       </mat-form-field>
 
       <div class="time">

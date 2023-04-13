@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Appointment } from '../models';
+import { formatDate } from '@angular/common';
 
 @Injectable()
 export class AppointmentsService {
@@ -8,7 +9,7 @@ export class AppointmentsService {
           "id": null,
           "title": "Default Title 1 ",
           "description": "This Is a Default Title 1 ",
-          "date": "2023-04-13T20:30:00.000Z",
+          "date": "2023-04-13",
           "startTime": "04:48",
           "endTime": "04:48"
       },
@@ -16,7 +17,7 @@ export class AppointmentsService {
           "id": null,
           "title": "Default Title 2 ",
           "description": "This Is a Default Title 2 ",
-          "date": "2023-04-13T20:30:00.000Z",
+          "date": "2023-04-13",
           "startTime": "04:47",
           "endTime": "04:48"
       },
@@ -24,7 +25,7 @@ export class AppointmentsService {
           "id": null,
           "title": "Default Title 3 ",
           "description": "This Is a Default Title 3 ",
-          "date": "2023-04-14T20:30:00.000Z",
+          "date": "2023-04-14",
           "startTime": "04:47",
           "endTime": "04:48"
       }
@@ -44,5 +45,11 @@ export class AppointmentsService {
   }
   deleteAppointment(appointmentId: number) {
     this.appointmentsList = this.appointmentsList.filter(item => item.id !== appointmentId)
+  }
+
+  getDateAppointment(date:Date){
+    const ali= formatDate(date,'yyyy-MM-dd','en-US');
+    const goox= this.appointmentsList.filter(item =>item.date===ali)
+    return goox
   }
 }

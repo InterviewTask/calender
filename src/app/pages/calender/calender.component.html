@@ -1,1 +1,12 @@
-<router-outlet></router-outlet>
+
+<div class="calender-container">
+
+  <mat-card class="calendar-card">
+    <mat-calendar [(selected)]="selected"></mat-calendar>
+  </mat-card>
+  <div class="appointmentList">
+    <app-appointments-table
+    [selectedDate]="selected"
+    ></app-appointments-table>
+  </div>
+</div>
