@@ -6,6 +6,7 @@ import { CalenderComponent } from './calender.component';
 import { AppointmentsTableComponent } from './components/appointments-table/appointments-table.component';
 import { SharedModule } from '@payever/shared';
 import { AppointmentComponent } from './components/appointment/appointment.component';
+import { AppointmentsService } from './services/appointments.service';
 
 
 @NgModule({
@@ -17,6 +18,9 @@ import { AppointmentComponent } from './components/appointment/appointment.compo
   imports: [
     SharedModule,
     CalenderRoutingModule
+  ],
+  providers:[
+    AppointmentsService
   ]
 })
 export class CalenderModule { }
