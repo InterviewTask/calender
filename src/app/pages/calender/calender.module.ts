@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { CalenderRoutingModule } from './calender-routing.module';
 import { CalenderComponent } from './calender.component';
+import { SharedModule } from '@payever/shared';
 
 
 @NgModule({
@@ -10,6 +11,7 @@ import { CalenderComponent } from './calender.component';
     CalenderComponent
   ],
   imports: [
+    SharedModule,
     CommonModule,
     CalenderRoutingModule
   ]
