@@ -26,3 +26,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .w-100{
   width: 100%;
 }
+.w-50{
+  width: 48%;
+}
+
+.app-full-bleed-dialog .mat-dialog-container {
+  padding: 0px;
+}

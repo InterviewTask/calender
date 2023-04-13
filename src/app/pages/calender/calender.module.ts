@@ -7,6 +7,7 @@ import { AppointmentsTableComponent } from './components/appointments-table/appo
 import { SharedModule } from '@payever/shared';
 import { AppointmentComponent } from './components/appointment/appointment.component';
 import { AppointmentsService } from './services/appointments.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { AppointmentsService } from './services/appointments.service';
   ],
   imports: [
     SharedModule,
-    CalenderRoutingModule
+    CalenderRoutingModule,
+    ReactiveFormsModule
   ],
   providers:[
     AppointmentsService

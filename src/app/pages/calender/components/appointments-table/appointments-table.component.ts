@@ -1,6 +1,9 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
+import { AppointmentComponent } from '../appointment/appointment.component';
+import { DialogConfig } from '@angular/cdk/dialog';
 
 
 export interface PeriodicElement {
@@ -55,7 +58,9 @@ export class AppointmentsTableComponent implements OnInit {
   dataSource = ELEMENT_DATA;
   displayedColumns = this.columns.map(c => c.columnDef);
   @ViewChild(MatTable)table!: MatTable<PeriodicElement>;
-  constructor() { }
+  constructor(
+    private dialog: MatDialog
+    ) { }
 
   ngOnInit(): void {
   }
@@ -64,4 +69,17 @@ export class AppointmentsTableComponent implements OnInit {
     moveItemInArray(this.dataSource,event.previousIndex,event.currentIndex)
     this.table.renderRows();
   }
+
+  openDialog(): void {
+    const config: MatDialogConfig = {
+      panelClass: 'app-full-bleed-dialog',
+      width:'30%'
+    }
+    const dialogRef = this.dialog.open(AppointmentComponent,config);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    });
+  }
+
 }
