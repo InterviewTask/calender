@@ -13,8 +13,24 @@
     <th mat-header-cell *matHeaderCellDef>
       {{ column.header }}
     </th>
-    <td mat-cell *matCellDef="let row">
-      {{ column.cell(row) }}
+    <td mat-cell *matCellDef="let row" class="info">
+      <ng-container >
+        <div class="title">
+          {{row.title}}
+        </div>
+        <div class="description">
+          {{row.description}}
+        </div>
+        <div class="date-time">
+          <div class="date">
+          {{row.date|date}}
+          </div>
+          <div class="time">
+          {{row.startTime}} - {{row.endTime}}
+          </div>
+        </div>
+
+      </ng-container>
     </td>
   </ng-container>
 

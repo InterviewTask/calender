@@ -1,8 +1,8 @@
 export interface Appointment {
-  id?: number;
+  id?: number |null;
   title: string;
   description?: string;
-  date: Date;
+  date: string;
   startTime: string;
   endTime: string;
 }

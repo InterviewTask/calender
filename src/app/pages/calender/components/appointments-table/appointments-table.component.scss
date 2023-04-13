@@ -27,3 +27,27 @@
 .cdk-drag-placeholder {
   background: #ccc;
 }
+
+.info{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  // background-color: rgb(115, 124, 173);
+  .title{
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  .description{
+    color: #383838;
+    font-size: 14px;
+  }
+  .date-time{
+    display: flex;
+    .date{
+      margin-right: 5px;
+    }
+    .time{
+      margin-left: 5px;
+    }
+  }
+}
