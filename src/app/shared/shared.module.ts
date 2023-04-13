@@ -1,10 +1,28 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ConfirmComponent } from './components/confirm/confirm.component';
+
+import {MatTableModule} from '@angular/material/table';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+
+import { CommonModule } from '@angular/common';
+
+/* ================
+/ COMPONENTS
+/=================*/
 
 const COMPONENTS = [
   ConfirmComponent
 ]
+
+/* ================
+/ IMPORTS
+/=================*/
+const MODULES = [
+  CommonModule,
+  MatTableModule,
+  DragDropModule
+]
+
 
 
 @NgModule({
@@ -12,10 +30,11 @@ const COMPONENTS = [
     ...COMPONENTS
   ],
   imports: [
-    CommonModule
+    ...MODULES
   ],
   exports:[
-    ...COMPONENTS
+    ...COMPONENTS,
+    ...MODULES
   ]
 })
 export class SharedModule { }
