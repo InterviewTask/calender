@@ -1,6 +1,7 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>Appointment</mat-card-title>
+    <mat-card-title *ngIf="data.id">Edit Appointment</mat-card-title>
+    <mat-card-title *ngIf="!data.id">Add Appointment</mat-card-title>
   </mat-card-header>
   <div class="divider"></div>
   <mat-card-content>
@@ -45,6 +46,9 @@
   </mat-card-content>
   <mat-card-actions>
     <button mat-button mat-dialog-close>Close</button>
-    <button mat-button (click)="handleAction()">Add</button>
+    <button  mat-button (click)="handleAction()">
+      <span *ngIf="data.id">Edit</span>
+      <span *ngIf="!data.id">Add</span>
+    </button>
   </mat-card-actions>
 </mat-card>
