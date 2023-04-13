@@ -1,9 +1,8 @@
 .cdk-drag-preview {
   box-sizing: border-box;
   border-radius: 4px;
-  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px
-              rgba(0, 0, 0, 0.14), 0 3px 14px 2px
-              rgba(0, 0, 0, 0.12);
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
 
   height: 48px;
   background-color: white;
@@ -28,26 +27,52 @@
   background: #ccc;
 }
 
-.info{
-  padding-top: 10px;
-  padding-bottom: 10px;
-  // background-color: rgb(115, 124, 173);
-  .title{
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  .description{
-    color: #383838;
-    font-size: 14px;
-  }
-  .date-time{
+.header {
+  display: flex;
+  align-items: center;
+
+  .header-name {
     display: flex;
-    .date{
-      margin-right: 5px;
+    margin-right: 10px;
+  }
+  .action {
+    display: flex;
+    mat-icon {
+      cursor: pointer;
     }
-    .time{
-      margin-left: 5px;
+  }
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .info {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    .title {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .description {
+      color: #383838;
+      font-size: 14px;
+    }
+    .date-time {
+      display: flex;
+      .date {
+        margin-right: 5px;
+      }
+      .time {
+        margin-left: 5px;
+      }
+    }
+  }
+  .actions{
+    mat-icon{
+      margin-left: 15px;
+      cursor: pointer;
+      color: #767676;
     }
   }
 }

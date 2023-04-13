@@ -19,26 +19,26 @@ export class AppointmentComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.createFrom()
+    this.createFrom(this.data)
   }
 
   createFrom(item?: Appointment) {
     this.form = this.fb.group({
-      id         : [item ? item.id :          null],
-      title      : [item ? item.title :       null, [Validators.required]],
-      description: [item ? item.description : null],
-      date       : [item ? item.date :        this.data.date, [Validators.required]],
-      startTime  : [item ? item.startTime :   null, [Validators.required]],
-      endTime    : [item ? item.endTime :     null, [Validators.required]],
+      id         : [item && item.id ? item.id : null],
+      title      : [item && item.title ? item.title : null, [Validators.required]],
+      description: [item && item.description ? item.description : null],
+      date       : [item && item.date ? item.date : this.data.date, [Validators.required]],
+      startTime  : [item && item.startTime ? item.startTime : null, [Validators.required]],
+      endTime    : [item && item.endTime ? item.endTime : null, [Validators.required]],
     })
   }
   handleAction() {
 
     this.form.markAllAsTouched();
-    if(this.form.valid){
+    if (this.form.valid) {
       this.form.get('date')?.setValue(
-        formatDate(this.form.get('date')?.value,'yyyy-MM-dd','en-US')
-        )
+        formatDate(this.form.get('date')?.value, 'yyyy-MM-dd', 'en-US')
+      )
       this.dialogRef.close(this.form.value)
     }
   }

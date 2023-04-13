@@ -72,4 +72,30 @@ export class AppointmentsTableComponent implements OnInit,OnChanges {
     });
   }
 
+  editItem(item:Appointment){
+    item={
+      ...item,
+      date:this.selectedDate
+    }
+    const config: MatDialogConfig = {
+      panelClass: 'app-full-bleed-dialog',
+      width:'30%',
+      data: item
+    }
+    const dialogRef = this.dialog.open(AppointmentComponent,config);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        this.appointmentsService.editAppointment(result)
+        this.getDate();
+
+      }
+
+    });
+  }
+
+  deleteItem(item:Appointment){
+
+  }
+
 }

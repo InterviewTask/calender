@@ -1,4 +1,3 @@
-<button (click)="openDialog()">open </button>
 <table
   mat-table
   [dataSource]="dataSource"
@@ -11,26 +10,36 @@
     [matColumnDef]="column.columnDef"
   >
     <th mat-header-cell *matHeaderCellDef>
-      {{ column.header }}
+      <div class="header">
+        <div class="header-name">
+          {{ column.header }}
+        </div>
+        <div class="action">
+          <mat-icon (click)="openDialog()">playlist_add</mat-icon>
+        </div>
+      </div>
     </th>
-    <td mat-cell *matCellDef="let row" class="info">
-      <ng-container >
-        <div class="title">
-          {{row.title}}
-        </div>
-        <div class="description">
-          {{row.description}}
-        </div>
-        <div class="date-time">
-          <div class="date">
-          {{row.date|date}}
+    <td mat-cell *matCellDef="let row">
+      <div class="container">
+        <div class="info">
+          <div class="title">
+            {{ row.title }}
           </div>
-          <div class="time">
-          {{row.startTime}} - {{row.endTime}}
+          <div class="description">
+            {{ row.description }}
+          </div>
+          <div class="date-time">
+            <div class="date">
+              {{ row.date | date }}
+            </div>
+            <div class="time">{{ row.startTime }} - {{ row.endTime }}</div>
           </div>
         </div>
-
-      </ng-container>
+        <div class="actions">
+          <mat-icon (click)="editItem(row)">edit</mat-icon>
+          <mat-icon (click)="deleteItem(row)">delete</mat-icon>
+        </div>
+      </div>
     </td>
   </ng-container>
 
@@ -38,5 +47,3 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns" cdkDrag></tr>
   <div *cdkDragPlaceholder></div>
 </table>
-
-
