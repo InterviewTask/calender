@@ -5,6 +5,7 @@ import { MatTable } from '@angular/material/table';
 import { AppointmentComponent } from '../appointment/appointment.component';
 import { AppointmentsService } from '../../services/appointments.service';
 import { Appointment } from '../../models';
+import { ConfirmComponent } from 'src/app/shared/components/confirm/confirm.component';
 
 
 @Component({
@@ -95,7 +96,22 @@ export class AppointmentsTableComponent implements OnInit,OnChanges {
   }
 
   deleteItem(item:Appointment){
+    const dialogRef = this.dialog.open(ConfirmComponent, {
+      width: '40%',
+      maxHeight: '90vh',
+      data: {
+        title: 'Delete Appointment',
+        message: 'Are you sure you want to delete this Appointment?',
+        button: 'Delete'
+      }
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.appointmentsService.deleteAppointment(item.id||0)
+        this.getDate();
+      }
+    });
   }
 
 }

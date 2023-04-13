@@ -15,8 +15,8 @@
       </div>
     </div>
     <div class="action-wrapper">
-      <button class="transparent-btn" type="button" (click)="close()"><span>Cancel</span></button>
-      <button class="red-gradient-action-btn" type="submit" (click)="submit()">
+      <button  mat-button	mat-dialog-close type="button" (click)="close()"><span>Cancel</span></button>
+      <button class="delete-btn" mat-button mat-raised-button color="warn"  type="submit" (click)="submit()">
         <span>{{ data.button ? data.button : 'Delete' }}</span>
       </button>
     </div>
