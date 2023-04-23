@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Appointment } from '../../models';
 import { formatDate } from '@angular/common';
+import { timeComparisonValidator } from '../../utils/custom-validators';
 
 @Component({
   selector: 'app-appointment',
@@ -30,10 +31,10 @@ export class AppointmentComponent implements OnInit {
       date       : [item && item.date ? item.date : this.data.date, [Validators.required]],
       startTime  : [item && item.startTime ? item.startTime : null, [Validators.required]],
       endTime    : [item && item.endTime ? item.endTime : null, [Validators.required]],
-    })
+    }
+    )
   }
   handleAction() {
-
     this.form.markAllAsTouched();
     if (this.form.valid) {
       this.form.get('date')?.setValue(

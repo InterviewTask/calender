@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppointmentsService } from './services/appointments.service';
 
 @Component({
   selector: 'app-calender',
@@ -6,11 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./calender.component.scss']
 })
 export class CalenderComponent implements OnInit {
-  selected!: Date;
-  constructor() { }
+  selecteDate!: Date ;
+  constructor(private appointmentsService: AppointmentsService) { }
 
   ngOnInit(): void {
-    this.selected = new Date();
+  }
+
+  changeDate(event: Date) {
+    this.appointmentsService.setSelectedDate(event)
   }
 
 

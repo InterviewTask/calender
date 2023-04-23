@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Appointment } from '../models';
 import { formatDate } from '@angular/common';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class AppointmentsService {
+  selectedDate$:Subject<Date>= new Subject<Date>();
+
   appointmentsList: Appointment[] = [
     {
       "id": 10,
@@ -62,4 +65,9 @@ export class AppointmentsService {
   private randomInt(min: number = 1, max: number = 100) {
     return Math.floor(Math.random() * (max - min + 1) + min)
   }
+
+  setSelectedDate(date:Date) {
+    this.selectedDate$.next(date);
+  }
+
 }

@@ -13,8 +13,8 @@ import { ConfirmComponent } from 'src/app/shared/components/confirm/confirm.comp
   templateUrl: './appointments-table.component.html',
   styleUrls: ['./appointments-table.component.scss']
 })
-export class AppointmentsTableComponent implements OnInit,OnChanges {
-  @Input()selectedDate = new Date();
+export class AppointmentsTableComponent implements OnInit {
+  selectedDate!:Date;
   columns = [
     {
       columnDef: 'title',
@@ -32,20 +32,21 @@ export class AppointmentsTableComponent implements OnInit,OnChanges {
     ) { }
 
   ngOnInit(): void {
+    this.getSelectedDate();
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    this.getDate();
+  getSelectedDate(){
+    this.appointmentsService.selectedDate$.subscribe(date=>{
+      this.selectedDate = date ;
+      this.getDate(this.selectedDate)
+    })
   }
 
-  getDate(){
-    this.dataSource=this.appointmentsService.getDateAppointment(this.selectedDate);
+  getDate(date:Date){
+    this.dataSource=this.appointmentsService.getDateAppointment(date);
     if(this.table){
       this.table.renderRows();
     }
-    console.log(this.dataSource);
-
-
   }
 
   drag(event: CdkDragDrop<Appointment>){
@@ -66,7 +67,7 @@ export class AppointmentsTableComponent implements OnInit,OnChanges {
     dialogRef.afterClosed().subscribe(result => {
       if(result){
         this.appointmentsService.addAppointment(result)
-        this.getDate();
+        this.getDate(this.selectedDate);
 
       }
 
@@ -88,7 +89,7 @@ export class AppointmentsTableComponent implements OnInit,OnChanges {
     dialogRef.afterClosed().subscribe(result => {
       if(result){
         this.appointmentsService.editAppointment(result)
-        this.getDate();
+        this.getDate(this.selectedDate);
 
       }
 
@@ -109,7 +110,7 @@ export class AppointmentsTableComponent implements OnInit,OnChanges {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.appointmentsService.deleteAppointment(item.id||0)
-        this.getDate();
+        this.getDate(this.selectedDate);
       }
     });
   }
